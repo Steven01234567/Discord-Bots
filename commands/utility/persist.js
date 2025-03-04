@@ -15,9 +15,12 @@ module.exports = {
 				.setRequired(false)),
 	async execute(interaction) {
 		const wait = require('node:timers/promises').setTimeout;
-		const delay = 1000;
+		const delay = 1000 / 2;
 
 		const target = interaction.options.getUser('target');
+
+		const looped_msg = userMention(target.id) + ' Hellooooo!';
+		const end_msg = userMention(target.id) + ' Helloooo...';
 
 		if (interaction.options.getBoolean('end')) {
 			persistSwitch = false;
@@ -25,12 +28,18 @@ module.exports = {
 		else {
 			persistSwitch = true;
 
-			await interaction.reply(userMention(target.id) + ' Hellooooo!');
+			await interaction.reply(looped_msg);
+			await wait(delay);
+			await target.send(looped_msg);
+			await wait(delay);
 			while (persistSwitch) {
+		    	await interaction.followUp(looped_msg);
 				await wait(delay);
-		    	await interaction.followUp(userMention(target.id) + ' Hellooooo!');
+				await target.send(looped_msg);
+				await wait(delay);
 			}
-			await interaction.followUp(userMention(target.id) + ' Helloooo...');
+			await interaction.followUp(end_msg);
+			await target.send(end_msg);
 		}
 	},
 };

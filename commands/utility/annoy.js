@@ -10,14 +10,20 @@ module.exports = {
 		        .setRequired(true)),
 	async execute(interaction) {
 		const wait = require('node:timers/promises').setTimeout;
-		const delay = 250;
+		const delay = 250 / 2;
 
 		const target = interaction.options.getUser('target');
 
-		await interaction.reply(userMention(target.id) + ' Hello!');
+		const msg = userMention(target.id) + ' Hello!';
+		await interaction.reply(msg);
 		await wait(delay);
-		await interaction.followUp(userMention(target.id) + ' Hello!');
+		await target.send(msg);
 		await wait(delay);
-		await interaction.followUp(userMention(target.id) + ' Hello!');
+		for (let i = 0; i < 2; i++) {
+			await interaction.followUp(msg);
+			await wait(delay);
+			await target.send(msg);
+			await wait(delay);
+		}
 	},
 };
