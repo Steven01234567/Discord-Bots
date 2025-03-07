@@ -18,9 +18,11 @@
   "homepage": "https://github.com/Steven01234567/Discord-Bots#readme",
   "dependencies": {
     "@discordjs/formatters": "^0.6.0",
+    "@discordjs/opus": "github:discordjs/opus",
     "@discordjs/voice": "^0.18.0",
     "discord.js": "^14.18.0",
     "dotenv": "^16.4.7",
+    "ffmpeg-static": "^5.2.0",
     "libsodium-wrappers": "^0.7.15"
   },
   "devDependencies": {
