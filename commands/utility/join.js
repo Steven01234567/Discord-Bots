@@ -27,10 +27,10 @@ module.exports = {
 
 		const connection = getVoiceConnection(interaction.guildId);
 		const player = createAudioPlayer();
-		// const summonSound = createAudioResource(join(__dirname, 'Annoy-o-Tron_Summon.mp3'));
-		const summonSound = createAudioResource('C:\\Users\\steve\\Downloads\\discord-bot\\Annoy-o-Tron_Attack.mp3');
-		// const summonSound = createAudioResource('C:\\Users\\steve\\Downloads\\discord-bot\\Annoy-o-Tron_Death.mp3');
-		// const summonSound = createAudioResource('C:\\Users\\steve\\Downloads\\discord-bot\\Annoy-o-Tron_Summon.mp3');
+		// const summonSound = createAudioResource(join(__dirname, 'audio_resources\\Annoy-o-Tron_Summon.mp3'));
+		const summonSound = createAudioResource('C:\\Users\\steve\\Downloads\\discord-bot\\audio_resources\\Annoy-o-Tron_Attack.mp3');
+		// const summonSound = createAudioResource('C:\\Users\\steve\\Downloads\\discord-bot\\audio_resources\\Annoy-o-Tron_Death.mp3');
+		// const summonSound = createAudioResource('C:\\Users\\steve\\Downloads\\discord-bot\\audio_resources\\Annoy-o-Tron_Summon.mp3');
 		try {
 			await entersState(voiceConnection, VoiceConnectionStatus.Ready, 5000);
 			console.log('Connected: ' + voiceChannel.guild.name);
