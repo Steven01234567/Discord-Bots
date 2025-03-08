@@ -1,6 +1,6 @@
 /* eslint-disable brace-style */
 const { SlashCommandBuilder, ChannelType } = require('discord.js');
-const { joinVoiceChannel, getVoiceConnection, createAudioPlayer, createAudioResource, entersState, VoiceConnectionStatus, generateDependencyReport, /*, StreamType, NoSubscriberBehavior*/ } = require('@discordjs/voice');
+const { joinVoiceChannel, getVoiceConnection, createAudioPlayer, createAudioResource, entersState, VoiceConnectionStatus /*, generateDependencyReport,, StreamType, NoSubscriberBehavior*/ } = require('@discordjs/voice');
 // const { createReadStream } = require('node:fs');
 const { join } = require('node:path');
 
@@ -29,6 +29,8 @@ module.exports = {
 		const player = createAudioPlayer();
 		// const summonSound = createAudioResource(join(__dirname, 'Annoy-o-Tron_Summon.mp3'));
 		const summonSound = createAudioResource('C:\\Users\\steve\\Downloads\\discord-bot\\Annoy-o-Tron_Attack.mp3');
+		// const summonSound = createAudioResource('C:\\Users\\steve\\Downloads\\discord-bot\\Annoy-o-Tron_Death.mp3');
+		// const summonSound = createAudioResource('C:\\Users\\steve\\Downloads\\discord-bot\\Annoy-o-Tron_Summon.mp3');
 		try {
 			await entersState(voiceConnection, VoiceConnectionStatus.Ready, 5000);
 			console.log('Connected: ' + voiceChannel.guild.name);
@@ -37,6 +39,7 @@ module.exports = {
 			return null;
 		}
 		const subscription = voiceConnection.subscribe(player);
+		// setTimeout(console.log(), 1000);
 		player.play(summonSound);
 		// console.log(summonSound);
 		console.log('The audio player has started playing!');
